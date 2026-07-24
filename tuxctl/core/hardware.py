@@ -15,3 +15,5 @@ print("CPU threads: ", cpu_threads)
 
 architect = platform.machine()
 print("Architecture:", architect)
+
+
