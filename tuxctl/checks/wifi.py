@@ -42,6 +42,22 @@ def check_network_interface():
                 "type: ": internet_type,
                 "status: ": interface_status 
             })
+            
+            return interfaces
 
-            print(interfaces)
-check_network_interface()
+def check_network_route():
+    route = subprocess.run(
+        ["ip", "route", "get", "0.1.1.1"],
+        capture_output = True,
+        text = True
+    )
+
+    ip_route_parts = route.stdout.split()
+
+    gateway = ip_route_parts[ip_route_parts.index("via") + 1]
+    interface = ip_route_parts[ip_route_parts.index("dev") + 1]
+    ip = ip_route_parts[ip_route_parts.index("src") + 1]
+
+    print(gateway)
+    print(interface)
+    print(ip)
