@@ -74,6 +74,13 @@ def check_network_route():
     interface = ip_route_parts[ip_route_parts.index("dev") + 1]
     ip = ip_route_parts[ip_route_parts.index("src") + 1]
 
-    print(gateway)
-    print(interface)
-    print(ip)
+
+    network = {
+        "gateway": gateway,
+        "interface": interface,
+        "ip": ip
+    }
+    print(network)
+    return network
+
+check_network_route()
