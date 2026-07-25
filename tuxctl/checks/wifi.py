@@ -2,9 +2,25 @@ import subprocess
 interfaces = []
 
 def check_ping():
-    ping = subprocess.run(["ping", "-c", "1" ,"1.1.1.1"])
+    ping = subprocess.run(
+        ["ping", "-c", "1" ,"1.1.1.1"],
+        capture_output = True,
+        text = True
+    )
     ping_result = ping.returncode
-    print(ping_result)
+    
+    return ping_result
+
+def check_dns():
+    ping = subprocess.run(
+        ["ping", "-c", "1", "google.com"],
+        capture_output = True,
+        text = True
+    )
+    dns_result = ping.returncode
+
+    return dns_result
+
 
 def check_network_interface():
     network_interfaces = subprocess.run(
