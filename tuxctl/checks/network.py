@@ -1,5 +1,6 @@
 import subprocess
 interfaces = []
+network = {}
 
 def check_ping():
     ping = subprocess.run(
@@ -7,19 +8,17 @@ def check_ping():
         capture_output = True,
         text = True
     )
-    ping_result = ping.returncode
-    
-    return ping_result
+
+    return ping.returncode == 0
 
 def check_dns():
-    ping = subprocess.run(
+    dns = subprocess.run(
         ["ping", "-c", "1", "google.com"],
         capture_output = True,
         text = True
     )
-    dns_result = ping.returncode
-
-    return dns_result
+    
+    return dns.returncode == 0
 
 
 def check_network_interface():
@@ -71,20 +70,17 @@ def check_network_route():
     ip_route_parts = route.stdout.split()
 
     if "via" not in ip_route_parts:
-        network = {
-            "gateway": None,
-            "interface": None,
-            "ip": None
-        }
+        network["gateway"] = None
+        network["interface"] = None
+        network["ip"] = None
+
     else:
         gateway = ip_route_parts[ip_route_parts.index("via") + 1]
         interface = ip_route_parts[ip_route_parts.index("dev") + 1]
         ip = ip_route_parts[ip_route_parts.index("src") + 1]
 
-        network = {
-            "gateway": gateway,
-            "interface": interface,
-            "ip": ip
-        }
-    print(network)
+        network["gateway"] = gateway
+        network["interface"] = interface
+        network["ip"] = ip
+
     return network
