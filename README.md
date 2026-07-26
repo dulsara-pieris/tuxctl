@@ -5,7 +5,8 @@ Tuxctl is a tool that helps Linux users fix their problems with their OS quickly
 
 ## Documentation
 
-- [License] (./LICENSE)
-- [Development Guide] (./docs/dev.md)
-- [Commands] (./docs/commands.md)
-- [Roadmap] (./roadmap.md)
+- [License](./LICENSE)
+- [Development Guide](./docs/dev.md)
+- [Commands](./docs/commands.md)
+- [Roadmap](./roadmap.md)
+
