@@ -1,0 +1,5 @@
+-WiFi (UNDER DEVELOPMENT)
+-some apps take few hard steps to install(STARTED DEVELOPMENT)
+
+-Video codec problem (TODO)
+
