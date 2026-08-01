@@ -1,7 +1,9 @@
 import requests
+import os
 from utils.colours import *
 
 base_url = "https://raw.githubusercontent.com/dulsara-pieris/tuxctl/Master/package_scripts/"
+tmp_package_dir = "/tmp/tuxctl/"
 
 def find_package_file(target):
     
@@ -14,3 +16,10 @@ def find_package_file(target):
         print(f"{RED}✗ Download timeout{RESET}")
         exit()
 
+def install_package(target):
+    os.makedirs(tmp_package_dir, exist_ok=True)
+    package_file_path = f"{tmp_package_dir}{target}.sh"
+
+    with open(package_file_path, "w") as file:
+        file.write(response.txt)
+        print(response.txt)

@@ -32,6 +32,7 @@ if action in ["install", "remove"]:
 
             if response.status_code == 200:
                 print(f"{GREEN}✓{RESET} Downloaded {target} Package")
+                install_package(target)
             elif response.status_code == 404:
                 print(f"{RED}✗ Package {target} not found{RESET}")
             else:
