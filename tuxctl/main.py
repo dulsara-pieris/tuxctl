@@ -5,7 +5,7 @@
 #network_problems = diagnose_network(network)
 
 from packages.main import find_package_file
-from package.main import install_package
+from packages.main import install_package
 
 import sys
 from utils.colours import *
