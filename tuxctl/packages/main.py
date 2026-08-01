@@ -1,6 +1,6 @@
 import requests
 
-base_url = "https://raw.githubusercontent.com/dulsara-pieris/tuxctl/package_scripts/"
+base_url = "https://raw.githubusercontent.com/dulsara-pieris/tuxctl/Master/package_scripts/"
 
 def find_package_file(target):
     
