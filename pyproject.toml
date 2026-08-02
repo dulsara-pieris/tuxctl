@@ -1,0 +1,14 @@
+[project]
+name = "tuxctl"
+version = "0.1.0"
+description = "Linux troubleshooting and package helper"
+requires-python = ">=3.10"
+dependencies = [
+    "requests"
+]
+
+[project.scripts]
+tuxctl = "tuxctl.main:main"
+
+[tool.setuptools.packages.find]
+include = ["tuxctl*"]
