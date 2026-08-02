@@ -1,5 +1,6 @@
 import requests
 import os
+import subprocess
 from utils.colours import *
 
 base_url = "https://raw.githubusercontent.com/dulsara-pieris/tuxctl/Master/package_scripts/"
@@ -20,6 +21,5 @@ def install_package(target):
     os.makedirs(tmp_package_dir, exist_ok=True)
     package_file_path = f"{tmp_package_dir}{target}.sh"
 
-    with open(package_file_path, "w") as file:
-        file.write(response.txt)
-        print(response.txt)
+    os.chmod(package_file_path, 0o755)
+    subprocess.run([package_file_path])
