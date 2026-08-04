@@ -2,12 +2,17 @@ import requests
 import os
 import subprocess
 import shutil
+import re
 
 from tuxctl.utils.colours import *
 
 base_url = "https://raw.githubusercontent.com/dulsara-pieris/tuxctl/Master/package_scripts/"
 tmp_package_dir = "/tmp/tuxctl/"
 
+
+#################
+# BASE ######### 
+################
 def find_package_file(target):
     package_url = f"{base_url}{target}.sh"
 
@@ -37,12 +42,21 @@ def install_package(target, response):
     
     os.chmod(package_file_path, 0o755)
     
+    if shutil.which("aria2") is None:
+        print(f"{RED}✗ Aria2 package is a requirement")
+        exit(1)
+
     process = subprocess.Popen(
         ["bash", package_file_path],
         stdout = subprocess.PIPE,
         stderr = subprocess.PIPE,
         text = True
     )
-
     for line in process.stdout:
-        print(line.strip())
+        if line = "Download"
+            match = re.search(r"\((\d+)%/", line)
+
+            if match:
+                percentage = int(match.group(1))
+            print(percentage)
+    process.wait
