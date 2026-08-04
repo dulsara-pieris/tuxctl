@@ -42,7 +42,7 @@ def install_package(target, response):
     
     os.chmod(package_file_path, 0o755)
     
-    if shutil.which("aria2") is None:
+    if shutil.which("aria2c") is None:
         print(f"{RED}✗ Aria2 package is a requirement")
         exit(1)
 
@@ -50,13 +50,13 @@ def install_package(target, response):
         ["bash", package_file_path],
         stdout = subprocess.PIPE,
         stderr = subprocess.PIPE,
-        text = True
+        text = True,
+        bufsize=1
     )
     for line in process.stdout:
-        if line == "Download":
-            match = re.search(r"\((\d+)%/", line)
-
-            if match:
-                percentage = int(match.group(1))
+        print(repr(line))
+        match = re.search(r"\((\d+)%\)", line)
+        if match:
+            percentage = int(match.group(1))
             print(percentage)
     process.wait
