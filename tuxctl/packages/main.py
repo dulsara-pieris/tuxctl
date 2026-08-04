@@ -53,7 +53,7 @@ def install_package(target, response):
         text = True
     )
     for line in process.stdout:
-        if line = "Download":
+        if line == "Download":
             match = re.search(r"\((\d+)%/", line)
 
             if match:
